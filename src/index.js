@@ -22,17 +22,20 @@ client.on("message", async (message) => {
     random_Num = Math.round(Math.random() * 5);
     await message.channel.send(dice_list[random_Num]);
   }
-  if (message.content === "임베드") {
+  if (message.content === "/임베드") {
     embed = new Discord.MessageEmbed()
-      .setTitle("title")
-      .setDescription("descriptin")
+      .setAuthor("TripEZ")
+      .setTitle("호텔예약 정보")
+      .setDescription("속초 호텔에 예약하셨습니다.")
       .setColor(0xffff)
       .setThumbnail(message.author.displayAvatarURL())
-      .addField("필드제목", "필드내용");
+      .addField("날짜 :", " 2023년 3월 27일")
+      .addField("객실형태", "초호화 스위트룸")
+      .addField("인원", " 4명");
     await message.channel.send(embed);
   }
   if (message.content === "!reac") {
-    message.react("😀");
+    message.react("🤣");
   }
   if (message.content === "!react") {
     react = await message.channel.send("이모지 반응");
@@ -54,14 +57,14 @@ client.on("message", async (message) => {
     });
   }
   if (message.content === "!reaction") {
-    react = await message.channel.send("이모지 반응");
-    react.react("🍕");
-    react.react("🍔");
-    react.react("🍟");
+    react = await message.channel.send("투표해주세요 ~");
+    react.react("👍");
+    react.react("👎");
+    react.react("🤟");
 
     const filter = (reaction, user) => {
       return (
-        ["🍕", "🍔", "🍟"].includes(reaction.emoji.name) &&
+        ["👍", "👎", "🤟"].includes(reaction.emoji.name) &&
         user.id === message.author.id
       );
     };
